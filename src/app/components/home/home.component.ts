@@ -9,8 +9,8 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public sort : string | undefined;
-  public games: Array<Game> | undefined;
+  public sort : string;
+  public games: Array<Game>;
 
   constructor(private httpService: HttpService, private activatedRoute: ActivatedRoute) { 
 
@@ -27,16 +27,11 @@ export class HomeComponent implements OnInit {
   }
 
   searchGame(sort:string,search?:string): void{
-    this.httpService.getGameList(sort,search).subscribe((gameList: APIResponse<Game>) =>{
+    this.httpService.getGameList(sort,search)
+    
+    .subscribe((gameList: APIResponse<Game>) =>{
       this.games = gameList.results;
-      //console.log(gameList.results);
-      for (const a of gameList.results) {
-        
-
-        for (const s of a.parent_platforms) {
-          console.log(s.platform.id)
-        }
-      }
+      console.log(gameList.results);
     });
   }
 
