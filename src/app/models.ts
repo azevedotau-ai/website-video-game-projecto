@@ -1,4 +1,5 @@
 export interface Game{
+    
     background_image: string;
     name: string;
     released: string;
@@ -12,7 +13,7 @@ export interface Game{
     ratings: Array<Ratings>;
     screenshots: Array<Screenshots>;
     trailers: Array<Trailers>;
-
+    id:string;
 }
 
 export interface APIResponse<T>{
@@ -21,6 +22,7 @@ export interface APIResponse<T>{
 
 
 interface Genre{
+   
     name: string;
 }
 
